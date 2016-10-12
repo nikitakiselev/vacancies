@@ -1,27 +1,38 @@
-# Laravel PHP Framework
+# HeadHunter vacancies parser
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Clone `git clone https://github.com/nikitakiselev/vacancies.git Vacancies` and run it on homestead.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+After start homestead and create `.env` configuration file
 
-## Official Documentation
+```Bash
+homestead ssh
+cd ~/Code/Vacancies
+cp .env.example .env
+```
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Change database settings in `.env` file and install dependencies
 
-## Contributing
+```
+composer install
+npm install
+gulp
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Then,
 
-## Security Vulnerabilities
+```
+art key:generate
+art migrate --seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Set queue driver to redis in `.env` file:
 
-## License
+```
+QUEUE_DRIVER=redis
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Configure queue worker with laravel documentaion [https://laravel.com/docs/5.3/queues#supervisor-configuration](https://laravel.com/docs/5.3/queues#supervisor-configuration).
+
+You can start parser handly `art hh:parse` or do it automatically every day in 00:00. Just config your server Cron job [https://laravel.com/docs/5.3/scheduling#introduction](https://laravel.com/docs/5.3/scheduling#introduction)
