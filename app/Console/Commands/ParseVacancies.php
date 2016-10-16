@@ -53,7 +53,7 @@ class ParseVacancies extends Command
                 $this->line("Current page number: {$searcher->currentPageNumber()}.");
 
                 $searcher->search()->each(function ($result) use ($area) {
-                    dispatch(new AddVacancy($result['id'], $area->hh_area_id));
+                    dispatch(new AddVacancy($result['id'], $area->id));
                 });
 
                 $searcher->nextPage();
