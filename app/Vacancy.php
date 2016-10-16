@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Vacancy extends Model
 {
+    use Searchable;
+
     /**
      * @var array
      */
