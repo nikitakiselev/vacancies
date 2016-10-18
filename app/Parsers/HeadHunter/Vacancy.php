@@ -35,11 +35,19 @@ class Vacancy
         return [
             'id' => $this->vacancyId,
             'url' => $url,
-            'title' => $crawler->filter('.b-vacancy-title')->text(),
-            'company' => $crawler->filter('.companyname > a')->text(),
-            'experience' => $crawler->filter('.b-vacancy-info [itemprop="experienceRequirements"]')->text(),
-            'description' => $crawler->filter('.b-vacancy-desc-wrapper')->text(),
-            'employment_mode' => $crawler->filter('.b-vacancy-employmentmode [itemprop="workHours"]')->text(),
+            'title' => $this->getInfo($crawler, '.b-vacancy-title'),
+            'company' => $this->getInfo($crawler, '.companyname > a'),
+            'experience' => $this->getInfo($crawler, '.b-vacancy-info [itemprop="experienceRequirements"]'),
+            'description' => $this->getInfo($crawler, '.b-vacancy-desc-wrapper'),
+            'employment_mode' => $this->getInfo($crawler, '.b-vacancy-employmentmode [itemprop="workHours"]'),
         ];
     }
+
+    protected function getInfo($crawler, $selector): string
+    {
+        return $crawler->filter($selector)->count()
+            ? $crawler->filter($selector)->text()
+            : '';
+    }
+
 }

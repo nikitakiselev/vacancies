@@ -1,0 +1,70 @@
+.algolia-autocomplete {
+    width: 100%;
+}
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+    width: 100%;
+}
+.algolia-autocomplete .aa-hint {
+    color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-top: none;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+    cursor: pointer;
+    padding: 5px 4px;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+    background-color: #B2D7FF;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.search-wrapper {
+    margin-bottom: 20px;
+}
+
+.search-results {
+    .vacancy-item {
+        margin-bottom: 20px;
+
+        h4 {
+            margin: 0 0 10px;
+        }
+
+        .vacancy-meta {
+            color: gray;
+            margin-bottom: 10px;
+            font-size: 90%;
+
+            .vacancy-meta-item {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    em {
+        background: rgba(255, 0, 0, 0.29);
+        font-style: normal;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .search-results-meta {
+        margin-bottom: 20px;
+        color: #999999;
+    }
+}
+
+.pager-wrapper {
+    margin-bottom: 20px;
+}

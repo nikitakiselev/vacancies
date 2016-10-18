@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Area;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('partials.areas-select', function ($view) {
+            $view->with('areas', Area::all());
+        });
     }
 
     /**
