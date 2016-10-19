@@ -9,7 +9,8 @@
         "laravel/framework": "5.3.*",
         "predis/predis": "~1.0",
         "laravel/scout": "^1.1",
-        "algolia/algoliasearch-client-php": "^1.10"
+        "algolia/algoliasearch-client-php": "^1.10",
+        "teamtnt/laravel-scout-tntsearch-driver": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -13,16 +13,13 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import algoliasearch from 'algoliasearch';
-
 const app = new Vue({
     el: '#app',
     data: {
         area_id: 1,
         query: '',
-        page: 0,
-        results: [],
-        index: null
+        page: 1,
+        results: []
     },
 
     watch: {
@@ -49,12 +46,15 @@ const app = new Vue({
 
     methods: {
         search: function (query, page = 0) {
-            this.index.search(query, {
+
+            let data = {
+                query: query,
                 page: page,
-                hitsPerPage: 10,
-                filters: `area_id=${this.area_id}`
-            }, function (err, content) {
-                this.results = content;
+                area: this.area_id
+            };
+
+            $.getJSON('/search', data, function (response) {
+                this.results = response;
             }.bind(this));
         },
 
@@ -65,10 +65,5 @@ const app = new Vue({
         prevPage: function () {
             this.page--;
         }
-    },
-
-    created: function () {
-        let client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);
-        this.index = client.initIndex(ALGOLIA_INDEX);
     }
 });

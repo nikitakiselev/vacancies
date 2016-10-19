@@ -47,9 +47,11 @@ class AddVacancy implements ShouldQueue
 
             $area = Area::find($this->areaId);
 
-            $area->vacancies()->create(
-                $vacancy->parseInfo()
-            );
+            Vacancy::withoutSyncingToSearch(function () use ($area, $vacancy) {
+                $area->vacancies()->create(
+                    $vacancy->parseInfo()
+                );
+            });
         }
     }
 }

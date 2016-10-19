@@ -38,4 +38,19 @@ class Vacancy extends Model
     {
         return $this->belongsTo(Area::class);
     }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'company' => $this->company,
+            'description' => $this->description,
+        ];
+    }
 }

@@ -20,7 +20,7 @@ class AreasTableSeeder extends Seeder
 //
 //        Area::create(['name' => 'Сочи', 'hh_area_id' => 237]);
 //        Area::create(['name' => 'Адлер', 'hh_area_id' => 2377]);
-        Area::create(['name' => 'Ростов-на-Дону', 'hh_area_id' => 76]);
+//        Area::create(['name' => 'Ростов-на-Дону', 'hh_area_id' => 76]);
 //        Area::create(['name' => 'Ставрополь', 'hh_area_id' => 84]);
 //        Area::create(['name' => 'Челябинск', 'hh_area_id' => 104]);
 //
@@ -47,6 +47,6 @@ class AreasTableSeeder extends Seeder
 //        Area::create(['name' => 'Владимир', 'hh_area_id' => 23]);
 //        Area::create(['name' => 'Пятигорск', 'hh_area_id' => 1498]);
 //        Area::create(['name' => 'Волжский', 'hh_area_id' => 1512]);
-//        Area::create(['name' => 'Аксай', 'hh_area_id' => 1532]);
+        Area::create(['name' => 'Аксай', 'hh_area_id' => 1532]);
     }
 }

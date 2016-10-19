@@ -80,4 +80,8 @@ return [
         ],
     ],
 
+    'tntsearch' => [
+        'storage'  => storage_path('tntsearch'),
+    ],
+
 ];
