@@ -13,7 +13,7 @@ class Vacancy extends Model
      * @var array
      */
     protected $fillable = [
-        'id',
+        'external_id',
         'url',
         'title',
         'company',
@@ -21,13 +21,6 @@ class Vacancy extends Model
         'description',
         'employment_mode',
     ];
-
-    /**
-     * Make id non incremental
-     *
-     * @var bool
-     */
-    public $incrementing = false;
 
     /**
      * Area of the vacancy

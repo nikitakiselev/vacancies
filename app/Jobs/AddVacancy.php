@@ -42,7 +42,7 @@ class AddVacancy implements ShouldQueue
      */
     public function handle()
     {
-        if (! Vacancy::find($this->vacancyId)) {
+        if (Vacancy::where('external_id', $this->vacancyId)->count() === 0) {
             $vacancy = new HHVacancy($this->vacancyId);
 
             $area = Area::find($this->areaId);

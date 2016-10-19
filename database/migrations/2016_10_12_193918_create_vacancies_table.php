@@ -15,6 +15,7 @@ class CreateVacanciesTable extends Migration
     {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('external_id')->unsigned()->index();
             $table->integer('area_id')->unsigned()->index();
             $table->string('url');
             $table->string('title');
