@@ -33,7 +33,7 @@ class Vacancy
         $crawler = new Crawler($contents);
 
         return [
-            'id' => $this->vacancyId,
+            'external_id' => $this->vacancyId,
             'url' => $url,
             'title' => $this->getInfo($crawler, '.b-vacancy-title'),
             'company' => $this->getInfo($crawler, '.companyname > a'),
