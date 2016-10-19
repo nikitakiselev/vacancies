@@ -28,6 +28,7 @@ const app = new Vue({
     watch: {
         query: function (newQuery) {
             this.results = [];
+            this.page = 0;
 
             if (newQuery.length) {
                 this.search(newQuery, this.page);
