@@ -26,7 +26,10 @@ class SearchController extends Controller
     {
         $query = $request->input('query');
         $page = $request->input('page', 1);
+        $areaId = $request->input('area', 1);
 
-        return Vacancy::search($query)->paginate(10, 'page', $page);
+        return Vacancy::search($query)
+            ->where('area_id', $areaId)
+            ->paginate(10, 'page', $page);
     }
 }
