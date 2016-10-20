@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Area;
+use App\Vacancy;
 use App\Jobs\AddVacancy;
 use Illuminate\Console\Command;
 use App\Parsers\HeadHunter\Searcher;
@@ -53,7 +54,9 @@ class ParseVacancies extends Command
                 $this->line("Current page number: {$searcher->currentPageNumber()}.");
 
                 $searcher->search()->each(function ($result) use ($area) {
-                    dispatch(new AddVacancy($result['id'], $area->id));
+                    if (Vacancy::where('external_id', $result['id'])->count() === 0) {
+                        dispatch(new AddVacancy($result['id'], $area->id));
+                    }
                 });
 
                 $searcher->nextPage();
