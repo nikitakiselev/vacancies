@@ -25,7 +25,7 @@ const app = new Vue({
     watch: {
         query: function (newQuery) {
             this.results = [];
-            this.page = 0;
+            this.page = 1;
 
             if (newQuery.length) {
                 this.search(newQuery, this.page);
@@ -46,7 +46,7 @@ const app = new Vue({
     },
 
     methods: {
-        search: function (query, page = 0) {
+        search: function (query, page = 1) {
 
             let data = {
                 query: query,

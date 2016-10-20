@@ -23,8 +23,8 @@
         <div class="search-results-meta" v-show="results.total > 0">
             Founded @{{ results.total }} result(s).
 
-            <span v-show="results.nbHits > results.hitsPerPage">
-                Showing @{{ results.current_page + 1 }} page of @{{ results.last_page }}.
+            <span v-show="results.total > results.per_page">
+                Showing @{{ results.current_page }} page of @{{ results.last_page }}.
             </span>
         </div>
 
@@ -53,10 +53,10 @@
             </li>
         </ul>
 
-        <nav v-show="results.nbPages > 1" class="pager-wrapper">
+        <nav v-show="results.last_page > 1" class="pager-wrapper">
             <ul class="pager">
-                <li v-show="results.page - 1 >= 1"><a href="#" @click.prevent="prevPage">Previous</a></li>
-                <li v-show="results.page + 1 < results.last_page"><a href="#" @click.prevent="nextPage">Next</a></li>
+                <li v-show="results.current_page - 1 >= 1"><a href="#" @click.prevent="prevPage">Previous</a></li>
+                <li v-show="results.current_page + 1 <= results.last_page"><a href="#" @click.prevent="nextPage">Next</a></li>
             </ul>
         </nav>
     </div>
