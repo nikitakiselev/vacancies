@@ -42,7 +42,7 @@ const app = new Vue({
 
         area_id: function (newAreaId) {
             this.page = 1;
-            
+
             this.search(this.query, this.page);
         }
     },
