@@ -50,12 +50,13 @@ class Searcher implements SearcherContract
         $this->getContents();
 
         return collect(
-            $this->crawler->filter('.search-result > .search-result-item')
+            $this->crawler->filter('.vacancy-serp-item')
                 ->each(function (Crawler $crawler) {
-                    $url = $crawler->filter('.search-result-item__name')->attr('href');
+                    $url = $crawler->filter('[data-qa="vacancy-serp__vacancy-title"]')->attr('href');
+                    $id = $this->extractVacancyIdFromUrl($url);
 
                     return [
-                        'id' => $this->extractVacancyIdFromUrl($url),
+                        'id' => $id,
                         'url' => $url,
                     ];
                 })
@@ -69,7 +70,7 @@ class Searcher implements SearcherContract
      */
     public function hasNextPage(): bool
     {
-        return $this->crawler->filter('.b-pager__arrows > .b-pager__next > a.m-active-arrow')->count() > 0;
+        return $this->crawler->filter('[data-qa="pager-block"] .HH-Pager-Controls-Next')->count() > 0;
     }
 
     /**

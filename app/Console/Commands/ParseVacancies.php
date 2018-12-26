@@ -54,7 +54,7 @@ class ParseVacancies extends Command
                 $this->line("Current page number: {$searcher->currentPageNumber()}.");
 
                 $searcher->search()->each(function ($result) use ($area) {
-                    if (Vacancy::where('external_id', $result['id'])->count() === 0) {
+                    if ($result['id'] && Vacancy::where('external_id', $result['id'])->count() === 0) {
                         dispatch(new AddVacancy($result['id'], $area->id));
                     }
                 });

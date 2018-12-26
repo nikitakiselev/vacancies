@@ -35,11 +35,11 @@ class Vacancy
         return [
             'external_id' => $this->vacancyId,
             'url' => $url,
-            'title' => $this->getInfo($crawler, '.b-vacancy-title'),
-            'company' => $this->getInfo($crawler, '.companyname > a'),
-            'experience' => $this->getInfo($crawler, '.b-vacancy-info [itemprop="experienceRequirements"]'),
-            'description' => $this->getInfo($crawler, '.b-vacancy-desc-wrapper'),
-            'employment_mode' => $this->getInfo($crawler, '.b-vacancy-employmentmode [itemprop="workHours"]'),
+            'title' => $this->getInfo($crawler, '[data-qa="vacancy-title"]'),
+            'company' => $this->getInfo($crawler, '[data-qa="vacancy-company"]'),
+            'experience' => $this->getInfo($crawler, '[data-qa="vacancy-experience"]'),
+            'description' => $this->getInfo($crawler, '[data-qa="vacancy-description"]'),
+            'employment_mode' => $this->getInfo($crawler, '[data-qa="vacancy-view-employment-mode"]'),
         ];
     }
 
